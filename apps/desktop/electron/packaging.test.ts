@@ -27,3 +27,10 @@ test('python runtime packaging installs runtime-only api requirements', () => {
   assert.match(prepareScript, /requirements-runtime\.txt/);
   assert.doesNotMatch(prepareScript, /requirements\.txt/);
 });
+
+test('vite build uses relative assets for electron file loading', () => {
+  const viteConfigPath = path.join(process.cwd(), 'vite.config.ts');
+  const viteConfig = readFileSync(viteConfigPath, 'utf8');
+
+  assert.match(viteConfig, /base:\s*['"]\.\/['"]/);
+});
