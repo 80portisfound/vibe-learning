@@ -15,13 +15,13 @@ test('python runtime packaging installs runtime-only api requirements', () => {
 
   const runtimeRequirements = readFileSync(runtimeRequirementsPath, 'utf8');
   assert.match(runtimeRequirements, /^fastapi/m);
+  assert.match(runtimeRequirements, /^requests/m);
+  assert.match(runtimeRequirements, /^httpx\[socks\]/m);
   assert.doesNotMatch(runtimeRequirements, /^pytest/m);
-  assert.doesNotMatch(runtimeRequirements, /^httpx/m);
 
   const devRequirements = readFileSync(devRequirementsPath, 'utf8');
   assert.match(devRequirements, /^-r requirements-runtime\.txt/m);
   assert.match(devRequirements, /^pytest/m);
-  assert.match(devRequirements, /^httpx/m);
 
   const prepareScript = readFileSync(prepareScriptPath, 'utf8');
   assert.match(prepareScript, /requirements-runtime\.txt/);
