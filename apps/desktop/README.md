@@ -2,6 +2,8 @@
 
 Hermes Vibe Desktop is an Electron + React workbench for running Hermes Agent backed coding sessions with a live learning/debugging dashboard. The app starts a bundled FastAPI backend, uses the local Hermes home at `~/.hermes` by default, and packages the vendored Hermes fork metadata with the desktop build.
 
+For the full Korean manual, see `../../docs/hermes-vibe-manual.md`.
+
 ## Current Release
 
 - Version: `0.1.0`

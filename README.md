@@ -146,3 +146,7 @@ npm run build
 ```
 
 Desktop packaging, release notes, and install guidance live in `apps/desktop/README.md`.
+
+Full Korean manual for execution, applying Hermes Vibe to other projects, dashboard behavior, and features:
+
+- `docs/hermes-vibe-manual.md`
