@@ -1,0 +1,11 @@
+{
+  "upstream_repository": "https://github.com/NousResearch/hermes-agent.git",
+  "upstream_commit": "75e1339d4cdb32652e560eccc3930cc9264ac67b",
+  "import_date": "2026-05-01",
+  "import_type": "hard-fork-vendored-source",
+  "local_integration_notes": [
+    "Initial import for Hermes Vibe Desktop runtime integration.",
+    "Backend currently uses apps/api/hermes_vibe_api/hermes/runtime.py stub until adapter work lands.",
+    "Future local changes should emit app-standard DashboardEvent records."
+  ]
+}

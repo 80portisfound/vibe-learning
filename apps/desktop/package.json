@@ -1,0 +1,77 @@
+{
+  "name": "hermes-vibe-desktop",
+  "version": "0.1.0",
+  "description": "Desktop Hermes agent workbench for vibe coding and learning context.",
+  "author": "Hermes Vibe",
+  "private": true,
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "test:electron": "npm run build:electron && node --test dist-electron/*.test.js",
+    "desktop": "npm run build:electron && electron dist-electron/main.js",
+    "generate:icon": "python3 scripts/generate-icon.py",
+    "prepare:python-runtime": "bash scripts/prepare-python-runtime.sh",
+    "package:dir": "npm run generate:icon && npm run build && npm run build:electron && npm run prepare:python-runtime && electron-builder --dir",
+    "package:mac": "npm run generate:icon && npm run build && npm run build:electron && npm run prepare:python-runtime && electron-builder --mac dmg zip"
+  },
+  "build": {
+    "appId": "com.hermesvibe.desktop",
+    "productName": "Hermes Vibe",
+    "artifactName": "Hermes-Vibe-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../api",
+        "to": "api",
+        "filter": [
+          "**/*",
+          "!**/__pycache__/**",
+          "!**/.pytest_cache/**"
+        ]
+      },
+      {
+        "from": "../../packages/hermes/HERMES_VIBE_FORK.json",
+        "to": "HERMES_VIBE_FORK.json"
+      },
+      {
+        "from": "build/python-runtime",
+        "to": "python-runtime"
+      }
+    ],
+    "mac": {
+      "icon": "build/assets/HermesVibe.icns",
+      "target": [
+        "dir"
+      ],
+      "category": "public.app-category.developer-tools"
+    },
+    "dmg": {
+      "artifactName": "Hermes-Vibe-${version}-${arch}.${ext}"
+    }
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "electron": "^41.5.0",
+    "electron-builder": "^26.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.10"
+  }
+}
