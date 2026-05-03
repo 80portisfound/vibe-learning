@@ -38,6 +38,11 @@ class ModelRegistry:
                     ],
                 ),
                 ModelProvider(
+                    id="kimi-coding",
+                    display_name="Kimi Coding",
+                    models=[ModelInfo(id="kimi-k2.6", display_name="Kimi K2.6")],
+                ),
+                ModelProvider(
                     id="anthropic",
                     display_name="Anthropic",
                     models=[ModelInfo(id="claude-sonnet-4.5", display_name="Claude Sonnet 4.5")],
